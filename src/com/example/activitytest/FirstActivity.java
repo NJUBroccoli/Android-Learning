@@ -4,11 +4,13 @@ import android.app.Activity;
 import android.view.View.OnClickListener;
 import android.view.View;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.Toast;
+import android.content.Intent;
 
 public class FirstActivity extends Activity {
 	
@@ -21,9 +23,23 @@ public class FirstActivity extends Activity {
 		button1.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				finish();
+				Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
+				startActivityForResult(intent, 1);
 			}
 		});
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		switch (requestCode) {
+		case 1:
+			if (resultCode == RESULT_OK) {
+				String returnedData = data.getStringExtra("data_return");
+				Log.d("FirstActivity", returnedData);
+			}
+			break;
+		default:
+		}
 	}
 	
 	public boolean onCreateOptionsMenu(Menu menu) {
