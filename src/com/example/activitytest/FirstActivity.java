@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.Toast;
 import android.content.Intent;
 
-public class FirstActivity extends Activity {
+public class FirstActivity extends BaseActivity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
